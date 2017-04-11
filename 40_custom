@@ -1,0 +1,23 @@
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+
+menuentry 'Disable GPU' {
+
+outb 0x7c2 1
+outb 0x7d4 0x28
+outb 0x7c2 2
+outb 0x7d4 0x10
+outb 0x7c2 2
+outb 0x7d4 0x40
+
+# Power down dGPU (will not work)
+outb 0x7c2 1
+outb 0x7d4 0x50
+outb 0x7c2 0
+outb 0x7d4 0x50
+
+
+}
